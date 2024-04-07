@@ -5,6 +5,7 @@ import com.kopiyama.service.impl.DataAllBookServiceImpl;
 import com.kopiyama.service.impl.LoanServiceImpl;
 import com.kopiyama.view.print.PrintDisplay;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class MainView {
 
     public void showMainMenu() {
         Scanner scanner = new Scanner(System.in);
-        int choice;
+        int choice = -1; // Inisialisasi awal choice dengan nilai diluar pilihan menu
 
         do {
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -32,15 +33,24 @@ public class MainView {
             System.out.println("4. Data All Loan Book Order");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
-            choice = scanner.nextInt();
+
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine(); // Membuang karakter newline dari buffer
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Membuang karakter yang tidak valid
+                continue; // Lanjutkan ke iterasi berikutnya
+            }
 
             switch (choice) {
                 case 1:
-                    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     System.out.println("Data All Loan Books");
                     List<BookForLoan> dataAllBooks = dataAllBookService.findAllLoanBook();
                     printDisplay.printAllLoanBooks(dataAllBooks);
-                    printDisplay.printReturnToMainMenu();
+
+                    // Menampilkan pilihan "Kembali ke Main Menu"
+                    choice = printDisplay.printReturnToMainMenu();
                     break;
                 case 2:
                     System.out.println("Loan Menu");
@@ -61,5 +71,7 @@ public class MainView {
                     System.out.println("Invalid choice. Please try again.");
             }
         } while (choice != 0);
+
+        scanner.close(); // Menutup scanner setelah penggunaan selesai
     }
 }
