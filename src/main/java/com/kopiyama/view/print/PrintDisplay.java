@@ -23,7 +23,7 @@ public class PrintDisplay {
                     loanBook.getAuthor().getName(),
                     loanBook.getStok());
         }
-        System.out.println("+------------+------------------------------------------------------------------------+--------------------------------+------------+\n");
+        System.out.println("+------------+------------------------------------------------------------------------+--------------------------------+------------+");
     }
 
     public void loanMenu() {
@@ -42,11 +42,11 @@ public class PrintDisplay {
     }
 
     public void printAllLoanBookOrders(List<LoanBookOrder> loanBookOrders) {
-        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+----------+");
-        System.out.println("|  Loan Id   | Member Name   |  Book Id   |                     Title                    | Loan Book Price | Loan Duration | Loan Fee |");
-        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+----------+");
+        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+------------+");
+        System.out.println("|  Loan Id   | Member Name   |  Book Id   |                     Title                    | Loan Book Price | Loan Duration |  Loan Fee  |");
+        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+------------+");
         for (LoanBookOrder order : loanBookOrders) {
-            System.out.printf("| %-10s | %-13s | %-10s | %-44s | %-15.2f | %-13d | %-8.2f |\n",
+            System.out.printf("| %-10s | %-13s | %-10s | %-44s | %-15.2f | %-13d | %-10.2f |\n",
                     order.getLoanID(),
                     order.getMember().getName(),
                     order.getBookID(),
@@ -55,7 +55,7 @@ public class PrintDisplay {
                     order.getLoanDuration(),
                     order.getLoanFee());
         }
-        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+----------+\n");
+        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+------------+");
     }
 
     public int printReturnToMainMenu() {
@@ -64,7 +64,7 @@ public class PrintDisplay {
         int choice = -1;
 
         while (isRunning) {
-            System.out.println("0. Back to Main Menu");
+            System.out.println("\n0. Back to Main Menu");
             System.out.print("Enter Your Choice: ");
 
             try {

@@ -2,6 +2,7 @@ package com.kopiyama.view;
 
 import com.kopiyama.model.BookForLoan;
 import com.kopiyama.service.impl.DataAllBookServiceImpl;
+import com.kopiyama.service.impl.ListLoanOrderServiceImpl;
 import com.kopiyama.service.impl.LoanServiceImpl;
 import com.kopiyama.service.impl.ReturnServiceImpl;
 import com.kopiyama.view.print.PrintDisplay;
@@ -14,12 +15,14 @@ public class MainView {
     private DataAllBookServiceImpl dataAllBookService;
     private LoanServiceImpl loanService;
     private ReturnServiceImpl returnService;
+    private ListLoanOrderServiceImpl listLoanOrderService;
     private PrintDisplay printDisplay;
 
-    public MainView(DataAllBookServiceImpl dataAllBookService, LoanServiceImpl loanService, ReturnServiceImpl returnService) {
+    public MainView(DataAllBookServiceImpl dataAllBookService, LoanServiceImpl loanService, ReturnServiceImpl returnService, ListLoanOrderServiceImpl listLoanOrderService) {
         this.dataAllBookService = dataAllBookService;
         this.loanService = loanService;
         this.returnService = returnService;
+        this.listLoanOrderService = listLoanOrderService;
         this.printDisplay = new PrintDisplay();
     }
 
@@ -66,8 +69,9 @@ public class MainView {
                     returnService.returnBook();
                     break;
                 case 4:
-                    System.out.println("Data All Loan Book Order Menu");
-                    // Tambahkan logika untuk fitur Data All Loan Book Order di sini
+                    System.out.println("\nData All Loan Book Order Menu");
+                    listLoanOrderService.listAllLoanOrders();
+                    printDisplay.printReturnToMainMenu();
                     break;
                 case 0:
                     System.out.println("Exiting...");

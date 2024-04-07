@@ -33,7 +33,7 @@ public class LoanServiceImpl implements LoanService {
         List<BookForLoan> availableBooks = dataAllBookService.findAllLoanBook();
         printDisplay.printAllLoanBooks(availableBooks);
 
-        System.out.print("\nMasukan Member Id: ");
+        System.out.print("\nMasukan Member Id   : ");
         String memberId = scanner.nextLine();
 
         Member member = repositoryLoanBook.findMemberById(memberId);
@@ -42,10 +42,10 @@ public class LoanServiceImpl implements LoanService {
             return;
         }
 
-        System.out.print("Masukan Book Id: ");
+        System.out.print("Masukan Book Id     : ");
         String bookId = scanner.nextLine();
 
-        System.out.print("Lama Peminjaman: ");
+        System.out.print("Lama Peminjaman     : ");
         int loanDuration = scanner.nextInt();
 
         BookForLoan selectedBook = null;

@@ -2,7 +2,9 @@ package com.kopiyama;
 
 import com.kopiyama.repository.RepositoryLoanBook;
 import com.kopiyama.repository.RepositoryLoanBookOrder;
+import com.kopiyama.service.ListLoanOrderService;
 import com.kopiyama.service.impl.DataAllBookServiceImpl;
+import com.kopiyama.service.impl.ListLoanOrderServiceImpl;
 import com.kopiyama.service.impl.LoanServiceImpl;
 import com.kopiyama.service.impl.ReturnServiceImpl;
 import com.kopiyama.view.MainView;
@@ -16,7 +18,8 @@ public class MainApp {
         PrintDisplay printDisplay = new PrintDisplay();
         LoanServiceImpl loanService = new LoanServiceImpl(printDisplay, dataAllBookService, repositoryLoanBookOrder, repositoryLoanBook);
         ReturnServiceImpl returnService = new ReturnServiceImpl(repositoryLoanBookOrder, repositoryLoanBook, printDisplay);
-        MainView mainView = new MainView(dataAllBookService, loanService, returnService);
+        ListLoanOrderServiceImpl listLoanOrderService = new ListLoanOrderServiceImpl(repositoryLoanBookOrder, printDisplay);
+        MainView mainView = new MainView(dataAllBookService, loanService, returnService, listLoanOrderService);
 
         mainView.showMainMenu();
     }
