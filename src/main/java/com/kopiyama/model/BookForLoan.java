@@ -20,7 +20,7 @@ public abstract class BookForLoan {
         this.stok = stok;
     }
 
-    public abstract void calculateBookLoanPrice();
+    public abstract double calculateBookLoanPrice();
 
 
     public String getBookID() {
@@ -78,7 +78,7 @@ public abstract class BookForLoan {
                 ", title='" + getTitle() + '\'' +
                 ", author=" + getAuthor() +
                 ", bookPrice=" + getBookPrice() +
-                ", bookLoanPrice=" + getBookLoanPrice() +
+                ", bookLoanPrice=" + bookLoanPrice +
                 ", stok=" + getStok() +
                 '}';
     }

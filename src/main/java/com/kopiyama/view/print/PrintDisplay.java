@@ -49,9 +49,9 @@ public class PrintDisplay {
             System.out.printf("| %-10s | %-13s | %-10s | %-44s | %-15.2f | %-13d | %-8.2f |\n",
                     order.getLoanID(),
                     order.getMember().getName(),
-                    order.getLoanBook().getBookID(),
+                    order.getBookID(),
                     order.getLoanBook().getTitle(),
-                    order.getLoanBook().getBookLoanPrice(),
+                    order.getLoanBookPrice(), // Gunakan Loan Book Price dari objek LoanBookOrder
                     order.getLoanDuration(),
                     order.getLoanFee());
         }

@@ -7,20 +7,30 @@ public class LoanBookOrder implements Loanable {
     private BookForLoan loanBook;
     private int loanDuration;
     private double loanFee;
+    private double loanBookPrice;
 
-    public LoanBookOrder(String loanID, String bookID, Member member, BookForLoan loanBook, int loanDuration, double loanFee) {
+    public LoanBookOrder(String loanID, String bookID, Member member, BookForLoan loanBook, int loanDuration, double loanFee, double loanBookPrice) {
         this.loanID = loanID;
         this.bookID = bookID;
         this.member = member;
         this.loanBook = loanBook;
         this.loanDuration = loanDuration;
         this.loanFee = loanFee;
+        this.loanBookPrice = loanBookPrice;
     }
 
     @Override
     public void calculateLoanFee() {
         double bookLoanPrice = loanBook.getBookLoanPrice();
         this.loanFee = bookLoanPrice * loanDuration;
+    }
+
+    public double getLoanBookPrice() {
+        return loanBookPrice;
+    }
+
+    public void setLoanBookPrice(double loanBookPrice) {
+        this.loanBookPrice = loanBookPrice;
     }
 
     public String getBookID() {
@@ -80,7 +90,7 @@ public class LoanBookOrder implements Loanable {
                 "Member = " + member.getName() + '\n' +
                 "Book ID = " + getBookID() + '\n' +
                 "Title = " + loanBook.getTitle() + '\n' +
-                "Loan Book Price = " + loanBook.getBookLoanPrice() + '\n' +
+                "Loan Book Price = " + getLoanBook().getBookLoanPrice()+ '\n' +
                 "Loan Duration = " + getLoanDuration() + '\n' +
                 "Loan Fee = " + getLoanFee() + '\n';
     }

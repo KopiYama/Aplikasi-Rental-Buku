@@ -13,24 +13,10 @@ public class Novel extends BookForLoan{
     }
 
     @Override
-    public void calculateBookLoanPrice() {
-        double rateStockPercentage;
-        if (getStok() < 10) {
-            rateStockPercentage = 0.05;
-        } else {
-            rateStockPercentage = 0.03;
-        }
-
-        double rateBookType;
-        if (this instanceof Novel) {
-            rateBookType = 0.05;
-        } else {
-            // Default rate jika jenis buku tidak diketahui
-            rateBookType = 0.0;
-        }
-
-        double hargaPinjam = (rateStockPercentage + rateBookType) * getBookPrice();
-        setBookLoanPrice(hargaPinjam);
+    public double calculateBookLoanPrice() {
+        double rateStockPercentage = getStok() < 10 ? 0.05 : 0.03; // 5% jika stok < 10, 3% jika stok >= 10
+        double rateBookType = 0.05; // 10% untuk Comic
+        return (rateStockPercentage + rateBookType) * getBookPrice();
     }
 
     public boolean isSeries() {

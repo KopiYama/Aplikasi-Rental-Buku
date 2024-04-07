@@ -57,8 +57,8 @@ public class LoanServiceImpl implements LoanService {
         }
 
         if (selectedBook != null && selectedBook.getStok() > 0) {
-            selectedBook.calculateBookLoanPrice();
-            selectedBook.setStok(selectedBook.getStok() - 1);
+            double bookLoanPrice = selectedBook.calculateBookLoanPrice(); // Hitung harga pinjam buku
+            selectedBook.setStok(selectedBook.getStok() - 1); // Kurangi stok buku
 
             String loanId = String.format("Ord-%03d", loanIdCounter++);
             LoanBookOrder loanBookOrder = new LoanBookOrder(
@@ -67,14 +67,15 @@ public class LoanServiceImpl implements LoanService {
                     member,
                     selectedBook,
                     loanDuration,
-                    selectedBook.getBookLoanPrice() * loanDuration
+                    bookLoanPrice * loanDuration, // Gunakan harga pinjam yang baru dihitung untuk Loan Fee
+                    bookLoanPrice // Simpan Loan Book Price di objek LoanBookOrder
             );
 
             repositoryLoanBookOrder.addLoanBookOrder(loanBookOrder);
-
             System.out.println("\nLoan Success!");
         } else {
             System.out.println("\nBuku tidak ditemukan atau stok habis. Loan Failed!");
         }
+
     }
 }
