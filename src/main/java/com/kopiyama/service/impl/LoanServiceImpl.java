@@ -1,19 +1,19 @@
 package com.kopiyama.service.impl;
 
 import com.kopiyama.model.BookForLoan;
-import com.kopiyama.repository.RepositoryLoanBook;
 import com.kopiyama.service.DataAllBookService;
 import com.kopiyama.service.LoanService;
+import com.kopiyama.view.print.PrintDisplay;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class LoanServiceImpl implements LoanService {
-    private RepositoryLoanBook repositoryLoanBook;
+    private PrintDisplay printDisplay;
     private DataAllBookService dataAllBookService;
 
-    public LoanServiceImpl(RepositoryLoanBook repositoryLoanBook, DataAllBookService dataAllBookService) {
-        this.repositoryLoanBook = repositoryLoanBook;
+    public LoanServiceImpl(PrintDisplay printDisplay, DataAllBookService dataAllBookService) {
+        this.printDisplay = printDisplay;
         this.dataAllBookService = dataAllBookService;
     }
 
@@ -23,10 +23,7 @@ public class LoanServiceImpl implements LoanService {
 
         // Menampilkan daftar buku yang tersedia untuk dipinjam
         List<BookForLoan> availableBooks = dataAllBookService.findAllLoanBook();
-        System.out.println("Daftar Buku Yang Tersedia:");
-        for (BookForLoan book : availableBooks) {
-            System.out.println(book);
-        }
+        printDisplay.printAllLoanBooks(availableBooks);
 
         // Input Member ID
         System.out.print("\nMasukan Member Id: ");

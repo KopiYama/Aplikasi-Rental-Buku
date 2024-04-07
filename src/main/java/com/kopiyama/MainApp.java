@@ -7,6 +7,7 @@ import com.kopiyama.service.LoanService;
 import com.kopiyama.service.impl.DataAllBookServiceImpl;
 import com.kopiyama.service.impl.LoanServiceImpl;
 import com.kopiyama.view.MainView;
+import com.kopiyama.view.print.PrintDisplay;
 
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class MainApp {
     public static void main(String[] args) {
         RepositoryLoanBook repository = new RepositoryLoanBook();
         DataAllBookServiceImpl dataAllBookService = new DataAllBookServiceImpl(repository);
-        LoanServiceImpl loanService = new LoanServiceImpl(repository, dataAllBookService);
+        PrintDisplay printDisplay = new PrintDisplay();
+        LoanServiceImpl loanService = new LoanServiceImpl(printDisplay, dataAllBookService);
         MainView mainView = new MainView(dataAllBookService, loanService);
 
 //        List<BookForLoan> availableBooks = dataAllBookService.findAllLoanBook();

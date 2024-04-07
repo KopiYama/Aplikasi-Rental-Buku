@@ -2,27 +2,10 @@ package com.kopiyama.repository;
 
 import com.kopiyama.model.*;
 
-import java.util.ArrayList;
-import java.util.List;
+public class RepositoryLoanBook extends Repository {
 
-public class RepositoryLoanBook {
-    private List<BookForLoan> loanBooks;
-
-    public RepositoryLoanBook() {
-        loanBooks = new ArrayList<>();
-
-        initializeData();
-    }
-
-    public List<BookForLoan> getLoanBooks() {
-        return loanBooks;
-    }
-
-    public void setLoanBooks(List<BookForLoan> loanBooks) {
-        this.loanBooks = loanBooks;
-    }
-
-    private void initializeData() {
+    @Override
+    protected void initializeData() {
         //Member
         Member member1 = new Member("M-001", "Risman", "Bandung");
         Member member2 = new Member("M-002", "Budi", "Bandung");
@@ -50,9 +33,5 @@ public class RepositoryLoanBook {
         loanBooks.add(new Novel("Novel-003", "Harry Potter and the Prisoner of Azkaban", novelis1, 200000.0, 0.0, 15, true));
         loanBooks.add(new Novel("Novel-004", "Ayah Aku Berbeda", novelis2, 35000.0, 0.0, 15, false));
         loanBooks.add(new Novel("Novel-005", "Madre", novelis3, 80000.0, 0.0, 10, false));
-    }
-
-    public List<BookForLoan> getAllLoanBooks() {
-        return loanBooks;
     }
 }
