@@ -24,6 +24,7 @@ public class MainView {
         int choice;
 
         do {
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Aplikasi Rental Buku Cucux");
             System.out.println("1. Data All Book For Loan");
             System.out.println("2. Loan");
@@ -35,9 +36,11 @@ public class MainView {
 
             switch (choice) {
                 case 1:
+                    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     System.out.println("Data All Loan Books");
                     List<BookForLoan> dataAllBooks = dataAllBookService.findAllLoanBook();
                     printDisplay.printAllLoanBooks(dataAllBooks);
+                    printDisplay.printReturnToMainMenu();
                     break;
                 case 2:
                     System.out.println("Loan Menu");
