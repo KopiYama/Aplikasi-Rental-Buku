@@ -12,7 +12,7 @@ public class Main {
 
         Novel novel1 = new Novel("Novel-001", "Madree", novelis1, 10000.0, 0.0, 19, true);
 
-        LoanBookOrder loanBookOrder1 = new LoanBookOrder("L-001", member1 , comic1, 3);
+//        LoanBookOrder loanBookOrder1 = new LoanBookOrder("L-001", member1, ,comic1, 3, 0.0);
 
 
         System.out.println(novelis1);
@@ -20,7 +20,7 @@ public class Main {
         System.out.println(member1);
         System.out.println(comic1);
         System.out.println(novel1);
-        System.out.println(loanBookOrder1);
+//        System.out.println(loanBookOrder1);
 
     }
 }

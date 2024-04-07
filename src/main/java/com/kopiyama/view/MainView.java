@@ -3,6 +3,7 @@ package com.kopiyama.view;
 import com.kopiyama.model.BookForLoan;
 import com.kopiyama.service.impl.DataAllBookServiceImpl;
 import com.kopiyama.service.impl.LoanServiceImpl;
+import com.kopiyama.service.impl.ReturnServiceImpl;
 import com.kopiyama.view.print.PrintDisplay;
 
 import java.util.InputMismatchException;
@@ -12,11 +13,13 @@ import java.util.Scanner;
 public class MainView {
     private DataAllBookServiceImpl dataAllBookService;
     private LoanServiceImpl loanService;
+    private ReturnServiceImpl returnService;
     private PrintDisplay printDisplay;
 
-    public MainView(DataAllBookServiceImpl dataAllBookService, LoanServiceImpl loanService) {
+    public MainView(DataAllBookServiceImpl dataAllBookService, LoanServiceImpl loanService, ReturnServiceImpl returnService) {
         this.dataAllBookService = dataAllBookService;
         this.loanService = loanService;
+        this.returnService = returnService;
         this.printDisplay = new PrintDisplay();
     }
 
@@ -59,8 +62,8 @@ public class MainView {
                     choice = 1;
                     break;
                 case 3:
-                    System.out.println("Return Menu");
-                    // Tambahkan logika untuk fitur Return di sini
+                    System.out.println("\nReturn Menu");
+                    returnService.returnBook();
                     break;
                 case 4:
                     System.out.println("Data All Loan Book Order Menu");

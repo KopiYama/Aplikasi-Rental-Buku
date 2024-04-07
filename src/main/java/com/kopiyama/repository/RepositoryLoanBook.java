@@ -2,14 +2,25 @@ package com.kopiyama.repository;
 
 import com.kopiyama.model.*;
 
-public class RepositoryLoanBook extends Repository {
+import java.util.ArrayList;
+import java.util.List;
 
+public class RepositoryLoanBook extends Repository {
+    private List<Member> members;
+
+    public RepositoryLoanBook() {
+        super();
+        members = new ArrayList<>();
+        initializeMembers();
+    }
+
+    private void initializeMembers() {
+        members.add(new Member("M-001", "Risman", "Bandung"));
+        members.add(new Member("M-002", "Budi", "Bandung"));
+        members.add(new Member("M-003", "Resti", "Kab. Bandung"));
+    }
     @Override
     protected void initializeData() {
-        //Member
-        Member member1 = new Member("M-001", "Risman", "Bandung");
-        Member member2 = new Member("M-002", "Budi", "Bandung");
-        Member member3 = new Member("M-003", "Resti", "Kab. Bandung");
 
         //Mangaka
         Mangaka mangaka1 = new Mangaka("Masashi Kisimoto");
@@ -34,4 +45,14 @@ public class RepositoryLoanBook extends Repository {
         loanBooks.add(new Novel("Novel-004", "Ayah Aku Berbeda", novelis2, 35000.0, 0.0, 15, false));
         loanBooks.add(new Novel("Novel-005", "Madre", novelis3, 80000.0, 0.0, 10, false));
     }
+
+    public Member findMemberById(String memberId) {
+        for (Member member : members) {
+            if (member.getMemberID().equals(memberId)) {
+                return member;
+            }
+        }
+        return null;
+    }
+
 }

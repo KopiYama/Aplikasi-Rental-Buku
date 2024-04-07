@@ -2,27 +2,33 @@ package com.kopiyama.model;
 
 public class LoanBookOrder implements Loanable {
     private String loanID;
+    private String bookID;
     private Member member;
     private BookForLoan loanBook;
     private int loanDuration;
     private double loanFee;
 
-    public LoanBookOrder() {
-    }
-
-    public LoanBookOrder(String loanID, Member member, BookForLoan loanBook, int loanDuration) {
+    public LoanBookOrder(String loanID, String bookID, Member member, BookForLoan loanBook, int loanDuration, double loanFee) {
         this.loanID = loanID;
+        this.bookID = bookID;
         this.member = member;
         this.loanBook = loanBook;
         this.loanDuration = loanDuration;
-        this.loanFee = 0.0; // Awalnya set ke 0, akan dihitung nanti
-        calculateLoanFee();
+        this.loanFee = loanFee;
     }
 
     @Override
     public void calculateLoanFee() {
         double bookLoanPrice = loanBook.getBookLoanPrice();
         this.loanFee = bookLoanPrice * loanDuration;
+    }
+
+    public String getBookID() {
+        return bookID;
+    }
+
+    public void setBookID(String bookID) {
+        this.bookID = bookID;
     }
 
     public String getLoanID() {
@@ -70,10 +76,12 @@ public class LoanBookOrder implements Loanable {
     @Override
     public String toString() {
         return "LoanBookOrder : " + '\n' +
-                "loan ID = " + loanID + '\n' +
-                "Member = " + member.getMemberID() + '\n' +
-                "Loan Book = " + loanBook.getBookID() + '\n' +
-                "Loan Duration = " + loanDuration + '\n' +
-                "Loan Fee = " + loanFee + '\n';
+                "loan ID = " + getLoanID() + '\n' +
+                "Member = " + member.getName() + '\n' +
+                "Book ID = " + getBookID() + '\n' +
+                "Title = " + loanBook.getTitle() + '\n' +
+                "Loan Book Price = " + loanBook.getBookLoanPrice() + '\n' +
+                "Loan Duration = " + getLoanDuration() + '\n' +
+                "Loan Fee = " + getLoanFee() + '\n';
     }
 }

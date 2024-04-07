@@ -2,6 +2,7 @@ package com.kopiyama.view.print;
 
 import com.kopiyama.Main;
 import com.kopiyama.model.BookForLoan;
+import com.kopiyama.model.LoanBookOrder;
 import jdk.dynalink.StandardNamespace;
 
 import java.util.InputMismatchException;
@@ -16,7 +17,11 @@ public class PrintDisplay {
         System.out.println("|   Book Id  |                                Title                                   |             Author             |    Stok    |");
         System.out.println("+------------+------------------------------------------------------------------------+--------------------------------+------------+");
         for (BookForLoan loanBook : dataAllBooks) {
-            System.out.printf("| %-10s | %-70s | %-30s | %-10s |\n", loanBook.getBookID(), loanBook.getTitle(), loanBook.getAuthor().getName(), loanBook.getStok());
+            System.out.printf("| %-10s | %-70s | %-30s | %-10s |\n",
+                    loanBook.getBookID(),
+                    loanBook.getTitle(),
+                    loanBook.getAuthor().getName(),
+                    loanBook.getStok());
         }
         System.out.println("+------------+------------------------------------------------------------------------+--------------------------------+------------+\n");
     }
@@ -34,8 +39,23 @@ public class PrintDisplay {
         System.out.println("Loan successful for Book ID: " + bookId + " to Customer ID: " + customerId);
 
         scanner.close();
+    }
 
-
+    public void printAllLoanBookOrders(List<LoanBookOrder> loanBookOrders) {
+        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+----------+");
+        System.out.println("|  Loan Id   | Member Name   |  Book Id   |                     Title                    | Loan Book Price | Loan Duration | Loan Fee |");
+        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+----------+");
+        for (LoanBookOrder order : loanBookOrders) {
+            System.out.printf("| %-10s | %-13s | %-10s | %-44s | %-15.2f | %-13d | %-8.2f |\n",
+                    order.getLoanID(),
+                    order.getMember().getName(),
+                    order.getLoanBook().getBookID(),
+                    order.getLoanBook().getTitle(),
+                    order.getLoanBook().getBookLoanPrice(),
+                    order.getLoanDuration(),
+                    order.getLoanFee());
+        }
+        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+----------+\n");
     }
 
     public int printReturnToMainMenu() {
@@ -62,33 +82,5 @@ public class PrintDisplay {
 
         return choice;
     }
-
-//    public static void printReturnToMainMenu() {
-//        Scanner scanner = new Scanner(System.in);
-//        boolean isRunning = true;
-//
-//        while (isRunning) {
-//            System.out.println("0. Back to Main Menu");
-//            System.out.println("Enter Your Choice: ");
-//
-//            try {
-//                String input =scanner.nextLine();
-//                if (input.trim().isEmpty()) {
-//                    System.out.println("Invalid choice. Please try again.");
-//                    continue;
-//                }
-//                int choice = Integer.parseInt(input);
-//
-//                switch (choice) {
-//                    case 0:
-//
-//                }
-//            } catch (NumberFormatException e) {
-//                System.out.println("\nPilihan tidak valid. Silakan coba lagi.\n");
-//            }
-//        }
-//    }
-
-
 
 }

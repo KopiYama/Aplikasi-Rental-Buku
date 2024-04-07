@@ -22,6 +22,7 @@ public abstract class BookForLoan {
 
     public abstract void calculateBookLoanPrice();
 
+
     public String getBookID() {
         return bookID;
     }
@@ -73,12 +74,12 @@ public abstract class BookForLoan {
     @Override
     public String toString() {
         return "BookForLoan{" +
-                "bookID='" + bookID + '\'' +
-                ", title='" + title + '\'' +
-                ", author=" + author +
-                ", bookPrice=" + bookPrice +
-                ", bookLoanPrice=" + bookLoanPrice +
-                ", stok=" + stok +
+                "bookID='" + getBookID() + '\'' +
+                ", title='" + getTitle() + '\'' +
+                ", author=" + getAuthor() +
+                ", bookPrice=" + getBookPrice() +
+                ", bookLoanPrice=" + getBookLoanPrice() +
+                ", stok=" + getStok() +
                 '}';
     }
 }

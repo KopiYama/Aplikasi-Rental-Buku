@@ -3,7 +3,7 @@ package com.kopiyama.model;
 public class Member extends Person{
     private String memberID;
     private String address;
-    public Member() {
+    public Member(String memberId) {
     }
 
     public Member(String memberID, String name, String address) {
