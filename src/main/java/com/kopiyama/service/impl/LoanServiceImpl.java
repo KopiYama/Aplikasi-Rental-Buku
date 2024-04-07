@@ -57,6 +57,7 @@ public class LoanServiceImpl implements LoanService {
         }
 
         if (selectedBook != null && selectedBook.getStok() > 0) {
+            selectedBook.calculateBookLoanPrice();
             selectedBook.setStok(selectedBook.getStok() - 1);
 
             String loanId = String.format("Ord-%03d", loanIdCounter++);

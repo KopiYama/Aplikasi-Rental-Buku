@@ -15,24 +15,11 @@ public class Comic extends BookForLoan{
 
     @Override
     public void calculateBookLoanPrice() {
-        double rateStockPercentage;
-        if (getStok() < 10) {
-            rateStockPercentage = 0.05; // Persentase Harga Pinjam jika Stock < 10
-        } else {
-            rateStockPercentage = 0.03; // Persentase Harga Pinjam jika Stock >= 10
-        }
+        double rateStockPercentage = getStok() < 10 ? 0.05 : 0.03; // 5% jika stok < 10, 3% jika stok == 10
+        double rateBookType = 0.10; // 10% untuk Comic
 
-        double rateBookType;
-        if (this instanceof Comic) {
-            rateBookType = 0.10; // Persentase Harga Pinjam untuk Comic
-        } else {
-            rateBookType = 0.0; // Default jika bukan Comic atau Novel
-        }
-
-        // Kalkulasi Harga Pinjam
         double loanPrice = (rateStockPercentage + rateBookType) * getBookPrice();
         setBookLoanPrice(loanPrice);
-
     }
 
     public String getGenre() {

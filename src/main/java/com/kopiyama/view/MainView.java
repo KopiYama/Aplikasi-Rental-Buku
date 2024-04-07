@@ -59,7 +59,7 @@ public class MainView {
                 case 2:
                     System.out.println("\nLoan Menu");
                     loanService.loanBook();
-                    choice = 1;
+                    printDisplay.printReturnToMainMenu();
                     break;
                 case 3:
                     System.out.println("\nReturn Menu");
