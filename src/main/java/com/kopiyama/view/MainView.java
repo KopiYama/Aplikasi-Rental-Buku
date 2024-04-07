@@ -22,7 +22,7 @@ public class MainView {
 
     public void showMainMenu() {
         Scanner scanner = new Scanner(System.in);
-        int choice = -1; // Inisialisasi awal choice dengan nilai diluar pilihan menu
+        int choice = -1;
 
         do {
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -35,26 +35,28 @@ public class MainView {
             System.out.print("Enter your choice: ");
 
             try {
-                choice = scanner.nextInt();
-                scanner.nextLine(); // Membuang karakter newline dari buffer
-            } catch (InputMismatchException e) {
+                String input = scanner.nextLine().trim();
+                if (input.isEmpty()) {
+                    throw new InputMismatchException();
+                }
+
+                choice = Integer.parseInt(input);
+            } catch (InputMismatchException | NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
-                scanner.nextLine(); // Membuang karakter yang tidak valid
-                continue; // Lanjutkan ke iterasi berikutnya
+                continue;
             }
 
             switch (choice) {
                 case 1:
-                    System.out.println("Data All Loan Books");
+                    System.out.println("\nData All Loan Books");
                     List<BookForLoan> dataAllBooks = dataAllBookService.findAllLoanBook();
                     printDisplay.printAllLoanBooks(dataAllBooks);
-
-                    // Menampilkan pilihan "Kembali ke Main Menu"
-                    choice = printDisplay.printReturnToMainMenu();
+                    printDisplay.printReturnToMainMenu();
                     break;
                 case 2:
                     System.out.println("Loan Menu");
-                    // Tambahkan logika untuk fitur Loan di sini
+                    loanService.loanBook();
+                    choice = 1;
                     break;
                 case 3:
                     System.out.println("Return Menu");
@@ -72,6 +74,7 @@ public class MainView {
             }
         } while (choice != 0);
 
-        scanner.close(); // Menutup scanner setelah penggunaan selesai
+        scanner.close();
     }
+
 }
