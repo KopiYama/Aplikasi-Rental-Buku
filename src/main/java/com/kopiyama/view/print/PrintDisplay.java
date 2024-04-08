@@ -26,36 +26,21 @@ public class PrintDisplay {
         System.out.println("+------------+------------------------------------------------------------------------+--------------------------------+------------+");
     }
 
-    public void loanMenu() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter Book ID: ");
-        String bookId = scanner.nextLine();
-
-        System.out.println("Enter Customer ID: ");
-        String customerId = scanner.nextLine();
-
-        // Implementasi logika untuk fitur Loan di sini
-        System.out.println("Loan successful for Book ID: " + bookId + " to Customer ID: " + customerId);
-
-        scanner.close();
-    }
-
     public void printAllLoanBookOrders(List<LoanBookOrder> loanBookOrders) {
-        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+------------+");
-        System.out.println("|  Loan Id   | Member Name   |  Book Id   |                     Title                    | Loan Book Price | Loan Duration |  Loan Fee  |");
-        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+------------+");
+        System.out.println("+------------+----------------+------------+----------------------------------------------+-----------------+---------------+------------+");
+        System.out.println("|  Loan Id   |  Member Name   |  Book Id   |                     Title                    | Loan Book Price | Loan Duration |  Loan Fee  |");
+        System.out.println("+------------+----------------+------------+----------------------------------------------+-----------------+---------------+------------+");
         for (LoanBookOrder order : loanBookOrders) {
-            System.out.printf("| %-10s | %-13s | %-10s | %-44s | %-15.2f | %-13d | %-10.2f |\n",
+            System.out.printf("| %-10s | %-14s | %-10s | %-44s | %-15.2f | %-13d | %-10.2f |\n",
                     order.getLoanID(),
                     order.getMember().getName(),
                     order.getBookID(),
                     order.getLoanBook().getTitle(),
-                    order.getLoanBookPrice(), // Gunakan Loan Book Price dari objek LoanBookOrder
+                    order.getLoanBookPrice(),
                     order.getLoanDuration(),
                     order.getLoanFee());
         }
-        System.out.println("+------------+---------------+------------+----------------------------------------------+-----------------+---------------+------------+");
+        System.out.println("+------------+----------------+------------+----------------------------------------------+-----------------+---------------+------------+");
     }
 
     public int printReturnToMainMenu() {
@@ -74,7 +59,7 @@ public class PrintDisplay {
                     continue;
                 }
                 choice = Integer.parseInt(input);
-                break; // Keluar dari loop jika input valid
+                break;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid choice. Please enter a valid number.");
             }

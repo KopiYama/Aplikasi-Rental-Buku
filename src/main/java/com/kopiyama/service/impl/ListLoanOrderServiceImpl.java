@@ -19,6 +19,11 @@ public class ListLoanOrderServiceImpl implements ListLoanOrderService {
     @Override
     public void listAllLoanOrders() {
         List<LoanBookOrder> loanBookOrders = repositoryLoanBookOrder.getAllLoanBookOrders();
-        printDisplay.printAllLoanBookOrders(loanBookOrders);
+        if (loanBookOrders.isEmpty()) {
+            System.out.println("No books currently on loan");
+            return;
+        } else {
+            printDisplay.printAllLoanBookOrders(loanBookOrders);
+        }
     }
 }

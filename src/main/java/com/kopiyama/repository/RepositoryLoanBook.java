@@ -18,6 +18,7 @@ public class RepositoryLoanBook extends Repository {
         members.add(new Member("M-001", "Risman", "Bandung"));
         members.add(new Member("M-002", "Budi", "Bandung"));
         members.add(new Member("M-003", "Resti", "Kab. Bandung"));
+        members.add(new Member("M-004", "M.Rizky Andika", "Garut"));
     }
     @Override
     protected void initializeData() {

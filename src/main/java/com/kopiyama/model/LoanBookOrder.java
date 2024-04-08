@@ -81,7 +81,6 @@ public class LoanBookOrder implements Loanable {
         this.loanFee = loanFee;
     }
 
-    // Getter dan setter lainnya sesuai kebutuhan
 
     @Override
     public String toString() {

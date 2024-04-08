@@ -14,8 +14,8 @@ public class Novel extends BookForLoan{
 
     @Override
     public double calculateBookLoanPrice() {
-        double rateStockPercentage = getStok() < 10 ? 0.05 : 0.03; // 5% jika stok < 10, 3% jika stok >= 10
-        double rateBookType = 0.05; // 10% untuk Comic
+        double rateStockPercentage = getStok() < 10 ? 0.05 : 0.03;
+        double rateBookType = 0.05;
         return (rateStockPercentage + rateBookType) * getBookPrice();
     }
 

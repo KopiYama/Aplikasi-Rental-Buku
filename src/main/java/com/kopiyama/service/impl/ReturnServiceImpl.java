@@ -42,8 +42,8 @@ public class ReturnServiceImpl implements ReturnService {
                 LoanBookOrder order = iterator.next();
                 if (order.getLoanID().equals(loanId)) {
                     BookForLoan book = order.getLoanBook();
-                    book.setStok(book.getStok() + 1); // Mengembalikan stok buku
-                    iterator.remove(); // Menghapus peminjaman dari daftar
+                    book.setStok(book.getStok() + 1);
+                    iterator.remove();
                     found = true;
                     break;
                 }

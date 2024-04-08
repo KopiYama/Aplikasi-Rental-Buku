@@ -57,8 +57,8 @@ public class LoanServiceImpl implements LoanService {
         }
 
         if (selectedBook != null && selectedBook.getStok() > 0) {
-            double bookLoanPrice = selectedBook.calculateBookLoanPrice(); // Hitung harga pinjam buku
-            selectedBook.setStok(selectedBook.getStok() - 1); // Kurangi stok buku
+            double bookLoanPrice = selectedBook.calculateBookLoanPrice(); // Buat hitung harga pinjam buku
+            selectedBook.setStok(selectedBook.getStok() - 1); // Buat kurangi stok buku
 
             String loanId = String.format("Ord-%03d", loanIdCounter++);
             LoanBookOrder loanBookOrder = new LoanBookOrder(
@@ -67,7 +67,7 @@ public class LoanServiceImpl implements LoanService {
                     member,
                     selectedBook,
                     loanDuration,
-                    bookLoanPrice * loanDuration, // Gunakan harga pinjam yang baru dihitung untuk Loan Fee
+                    bookLoanPrice * loanDuration, // Loan price nya langsung ke simpan di objek nya masing"
                     bookLoanPrice // Simpan Loan Book Price di objek LoanBookOrder
             );
 
