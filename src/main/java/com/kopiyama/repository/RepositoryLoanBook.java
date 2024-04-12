@@ -5,13 +5,19 @@ import com.kopiyama.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositoryLoanBook extends Repository {
+public class RepositoryLoanBook {
+
+    protected List<BookForLoan> loanBooks;
 
     public RepositoryLoanBook() {
-        super();
+        loanBooks = new ArrayList<>();
+        initializeData();
     }
 
-    @Override
+    public List<BookForLoan> getAllLoanBooks() {
+        return loanBooks;
+    }
+
     protected void initializeData() {
 
         //Mangaka
