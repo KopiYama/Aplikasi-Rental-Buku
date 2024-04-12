@@ -29,6 +29,7 @@ public class ReturnServiceImpl implements ReturnService {
         List<LoanBookOrder> loanBookOrders = repositoryLoanBookOrder.getAllLoanBookOrders();
         if (loanBookOrders.isEmpty()) {
             System.out.println("No books currently on loan.");
+            printDisplay.printReturnToMainMenu();
             return;
         } else {
             printDisplay.printAllLoanBookOrders(loanBookOrders);
