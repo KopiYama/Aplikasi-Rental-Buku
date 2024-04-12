@@ -36,7 +36,7 @@ public class LoanServiceImpl implements LoanService {
         System.out.print("\nMasukan Member Id   : ");
         String memberId = scanner.nextLine();
 
-        Member member = repositoryLoanBook.findMemberById(memberId);
+        Member member = repositoryLoanBookOrder.findMemberById(memberId);
         if (member == null) {
             System.out.println("\nMember not found. Loan Failed!");
             return;
